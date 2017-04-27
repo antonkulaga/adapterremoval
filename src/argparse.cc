@@ -420,6 +420,57 @@ std::string any::to_str() const
 
 ///////////////////////////////////////////////////////////////////////////////
 
+many::many(string_vec* value, const std::string& metavar, const std::string& help)
+    : consumer_base(metavar, help)
+    , m_ptr(value)
+    , m_sink()
+{
+}
+
+
+size_t many::consume(string_vec_citer start, const string_vec_citer& end)
+{
+    m_value_set = true;
+    string_vec_citer it = start;
+    for (; it != end; ++it) {
+        if (!it->empty() && it->front() == '-') {
+            break;
+        }
+    }
+
+    if (m_ptr) {
+        m_ptr->assign(start, it);
+    } else {
+        m_sink.assign(start, it);
+    }
+
+    return static_cast<size_t>(it - start);
+}
+
+
+std::string many::to_str() const
+{
+    const string_vec& result = m_ptr ? *m_ptr : m_sink;
+    if (result.empty()) {
+        return "<not set>";
+    } else {
+        std::string output;
+
+        for (auto& s: result) {
+            if (!output.empty()) {
+                output.push_back(';');
+            }
+
+            output.append(s);
+        }
+
+        return output;
+    }
+}
+
+
+///////////////////////////////////////////////////////////////////////////////
+
 knob::knob(unsigned* value, const std::string& metavar, const std::string& help)
     : consumer_base(metavar, help)
     , m_ptr(value)

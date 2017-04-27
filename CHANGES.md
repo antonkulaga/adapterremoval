@@ -1,5 +1,8 @@
 ### Unreleased
   * Numerous spelling errors fixed courtesy of Andreas Tille (tillea).
+  * Added support for specifying multiple filenames after --file1 and
+    --file2, in which case the files are treated as if they were
+    concatenated. This is supported for all operations.
 
 
 ### Version 2.2.0 - 2016-10-27

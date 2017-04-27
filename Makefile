@@ -23,7 +23,7 @@ QUIET_BUILD := yes
 COLOR_BUILD := yes
 
 # Debug build; adds warnings and debugging symbols
-DEBUG_BUILD := no
+DEBUG_BUILD := yes
 
 
 ###############################################################################
@@ -86,6 +86,7 @@ LIBOBJS  := $(BDIR)/adapterset.o \
             $(BDIR)/fastq_enc.o \
             $(BDIR)/fastq_io.o \
             $(BDIR)/linereader.o \
+            $(BDIR)/linereader_joined.o \
             $(BDIR)/main_adapter_id.o \
             $(BDIR)/main_adapter_rm.o \
             $(BDIR)/main_demultiplex.o \

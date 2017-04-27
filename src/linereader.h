@@ -62,7 +62,7 @@ public:
 };
 
 
-/** Base-class for line reading; used by recievers. */
+/** Base-class for line reading; used by receivers. */
 class line_reader_base
 {
 public:
@@ -95,7 +95,7 @@ public:
     /** Closes the file, if still open. */
     ~line_reader();
 
-    /** Reads a lien into dst, returning false on EOF. */
+    /** Reads a line into dst, returning false on EOF. */
     bool getline(std::string& dst);
 
     /** Closes the file, if still open. */
@@ -150,7 +150,7 @@ private:
     void initialize_buffers_bzip2();
     /** Refills 'm_buffer' from compressed data; may refill raw buffers. */
     void refill_buffers_bzip2();
-    /** Closes gzip2 buffers and frees assosiated memory. */
+    /** Closes gzip2 buffers and frees associated memory. */
     void close_buffers_bzip2();
 
 
